@@ -21,4 +21,4 @@
 
 1. Ура! Вся подготовка сделана. Можно запускать программу обычным способом. Например, через командную строку:
 
-          ```python3 calc_clicks_from_bitlink.py```
+```  python3 calc_clicks_from_bitlink.py  ```
