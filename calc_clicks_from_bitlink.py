@@ -33,26 +33,20 @@ def main():
     token = os.environ['BITLY_TOKEN']
     url = input('Введите ссылку: ')
     url_sh = f'{urlparse(url).netloc}{urlparse(url).path}'
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-    except requests.exceptions.HTTPError:
-        print('Недействительная ссылка')
-    else:
-        if is_bitlink(url_sh, token):
-            try:
-                clicks_count = count_clicks(token, url_sh)
-            except requests.exceptions.HTTPError:
-                print('Операция завершена с ошибкой')
-            else:
-                print(f'По Вашей ссылке перешли {clicks_count} раз(а)')
+    if is_bitlink(url_sh, token):
+        try:
+            clicks_count = count_clicks(token, url_sh)
+        except requests.exceptions.HTTPError:
+            print('Операция завершена с ошибкой')
         else:
-            try:
-                bitlink = shorten_link(token, url)
-            except requests.exceptions.HTTPError:
-                print('Операция завершена с ошибкой')
-            else:
-                print(f'Битлинк: {bitlink}')
+            print(f'По Вашей ссылке перешли {clicks_count} раз(а)')
+    else:
+        try:
+            bitlink = shorten_link(token, url)
+        except requests.exceptions.HTTPError:
+            print('Операция завершена с ошибкой')
+        else:
+            print(f'Битлинк: {bitlink}')
 
 
 if __name__ == '__main__':
