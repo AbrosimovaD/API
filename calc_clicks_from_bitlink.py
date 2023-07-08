@@ -17,8 +17,9 @@ def shorten_link(token, url):
 
 def count_clicks(token, url):
     headers = {'Authorization': f'Bearer {token}'}
+    params = {'units': -1}
     link = f'{MAIN_LINK}bitlinks/{url}/clicks/summary'
-    response = requests.get(link, headers=headers)
+    response = requests.get(link, headers=headers, params=params)
     response.raise_for_status()
     return response.json()['total_clicks']
 
