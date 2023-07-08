@@ -3,6 +3,7 @@ import os
 import requests
 from urllib.parse import urlparse
 
+
 MAIN_LINK = 'https://api-ssl.bitly.com/v4/'
 
 
