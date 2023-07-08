@@ -30,7 +30,7 @@ def is_bitlink(url, token):
 
 def main():
     load_dotenv()
-    token = os.environ['TOKEN']
+    token = os.environ['BITLY_TOKEN']
     url = input('Введите ссылку: ')
     url_sh = f'{urlparse(url).netloc}{urlparse(url).path}'
     try:
