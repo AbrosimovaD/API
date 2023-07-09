@@ -35,10 +35,10 @@ def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
     url = input('Введите ссылку: ')
-    url_sh = f'{urlparse(url).netloc}{urlparse(url).path}'
-    if is_bitlink(url_sh, token):
+    parsed_url = urlparse(url)
+    if is_bitlink(f'{parsed_url.netloc}{parsed_url.path}', token):
         try:
-            clicks_count = count_clicks(token, url_sh)
+            clicks_count = count_clicks(token, f'{parsed_url.netloc}{parsed_url.path}')
         except requests.exceptions.HTTPError:
             print('Операция завершена с ошибкой')
         else:
