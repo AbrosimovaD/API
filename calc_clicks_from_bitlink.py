@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import requests
 from urllib.parse import urlparse
+import argparse
 
 
 MAIN_LINK = 'https://api-ssl.bitly.com/v4/'
@@ -34,7 +35,7 @@ def is_bitlink(url, token):
 def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
-    url = input('Введите ссылку: ')
+    url = parser.parse_args().link
     parsed_url = urlparse(url)
     if is_bitlink(f'{parsed_url.netloc}{parsed_url.path}', token):
         try:
@@ -53,4 +54,6 @@ def main():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Get link to analize')
+    parser.add_argument('link', type=str, help='provide a link')
     main()
