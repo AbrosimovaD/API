@@ -35,6 +35,8 @@ def is_bitlink(url, token):
 def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
+    parser = argparse.ArgumentParser(description='Get link to analize')
+    parser.add_argument('link', type=str, help='provide a link')
     url = parser.parse_args().link
     parsed_url = urlparse(url)
     if is_bitlink(f'{parsed_url.netloc}{parsed_url.path}', token):
@@ -54,6 +56,4 @@ def main():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Get link to analize')
-    parser.add_argument('link', type=str, help='provide a link')
     main()
