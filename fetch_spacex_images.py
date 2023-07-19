@@ -27,7 +27,7 @@ def fetch_spacex_last_launch(bot_api, chat_id, launch_id, path_to_load):
 def main():
     parser = argparse.ArgumentParser(description='Load images from SpaceX')
     parser.add_argument('--launch_id', type=str, default = '', help='provide an id')
-    parser.add_argument('-p', '--path_to_load', type=str, default = 'D://images', help='Path to load images')    
+    parser.add_argument('-p', '--path_to_load', type=str, default = 'images', help='Path to load images')    
     launch_id = parser.parse_args().launch_id
     path_to_load = parser.parse_args().path_to_load
     load_dotenv()
