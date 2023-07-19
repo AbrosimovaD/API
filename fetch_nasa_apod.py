@@ -21,8 +21,6 @@ def fetch_nasa_apod(bot_api, chat_id, api_key, n, path_to_load ):
             publish_to_telegram(bot_api, chat_id, link)
 
 
-
-
 def main():
     load_dotenv()
     api_key = os.environ['NASA_KEY']
@@ -30,7 +28,7 @@ def main():
     chat_id = os.environ['TELEGRAM_CHAT_ID']
     parser = argparse.ArgumentParser(description='Load images from NASA APOD')
     parser.add_argument('-n', '--numb', type=int, default = 1,  help='Number of photos to load')
-    parser.add_argument('-p', '--path_to_load', type=str, default = 'D://images', help='Path to load images')    
+    parser.add_argument('-p', '--path_to_load', type=str, default = 'images', help='Path to load images')    
     numb = parser.parse_args().numb
     path_to_load = parser.parse_args().path_to_load
     fetch_nasa_apod(bot_api, chat_id, api_key, numb, path_to_load)
